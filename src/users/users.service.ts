@@ -10,6 +10,15 @@ export class UsersService {
     private readonly userRepository: Repository<UsersModel>,
   ) {}
 
+  // 이메일로 가입한 유저 정보
+  async getUserByEmail(email: string) {
+    return this.userRepository.findOne({
+      where: {
+        email,
+      },
+    });
+  }
+
   async createUser(
     userInfo: Pick<UsersModel, 'email' | 'password' | 'nickname'>,
   ) {
