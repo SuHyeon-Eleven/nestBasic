@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import config from './configs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         logging: configService.get<string>('NODE_ENV') !== 'prod',
       }),
     }),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
